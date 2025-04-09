@@ -3,14 +3,34 @@ let playerSequence = [];
 let score = 0;
 let acceptingInput = false;
 
-const sounds = [
-  new Audio('sound1.wav'),
-  new Audio('sound2.wav'),
-  new Audio('sound3.wav'),
-  new Audio('sound4.wav'),
-  new Audio('sound5.wav'),
-  new Audio('sound6.wav'),
-];
+const sounds = {
+  0: new Audio('DO.wav'),
+  1: new Audio('RE.wav'),
+  2: new Audio('MI.wav'),
+  3: new Audio('FA.wav'),
+  4: new Audio('SI.wav'),
+  5: new Audio('LA.wav'),
+};
+
+const bgMusic = new Audio('bg-music.wav');
+bgMusic.loop = true;
+bgMusic.volume = 0.2;
+
+const gameOverSound = new Audio('gameover.wav');
+
+function playSound(index) {
+  if (sounds[index]) {
+    sounds[index].currentTime = 0;
+    sounds[index].play();
+  }
+}
+
+function stopSound(index) {
+  if (sounds[index]) {
+    sounds[index].pause();
+    sounds[index].currentTime = 0;
+  }
+}
 
 const startBtn = document.getElementById('startBtn');
 const gameBoard = document.getElementById('gameBoard');
@@ -21,6 +41,7 @@ const scoreDisplay = document.getElementById('scoreDisplay');
 startBtn.addEventListener('click', () => {
   startBtn.style.display = 'none';
   gameBoard.style.display = 'grid';
+  bgMusic.play();
   startGame();
 });
 
@@ -39,22 +60,25 @@ function nextRound() {
   playSequence();
 }
 
-function playSequence() {
-  sequence.forEach((tileIndex, i) => {
-    setTimeout(() => {
-      flashTile(tileIndex);
-      if (i === sequence.length - 1) {
-        setTimeout(() => acceptingInput = true, 600);
-      }
-    }, 700 * i);
-  });
+async function playSequence() {
+  for (let i = 0; i < sequence.length; i++) {
+    const tileIndex = sequence[i];
+    await flashTile(tileIndex);
+  }
+  acceptingInput = true;
 }
 
 function flashTile(index) {
-  const tile = tiles[index];
-  tile.style.opacity = 0.5;
-  sounds[index].play();
-  setTimeout(() => tile.style.opacity = 1, 300);
+  return new Promise((resolve) => {
+    const tile = tiles[index];
+    playSound(index);  // Start playing the sound
+    tile.style.opacity = 0.5;  // Highlight the tile
+    setTimeout(() => {
+      tile.style.opacity = 1;  // Stop highlighting the tile
+      stopSound(index);  // Stop the sound
+      setTimeout(resolve, 300); // Wait before the next tile
+    }, 600); // 600ms for visual highlight
+  });
 }
 
 tiles.forEach((tile) => {
@@ -62,7 +86,7 @@ tiles.forEach((tile) => {
     if (!acceptingInput) return;
 
     const clickedIndex = parseInt(tile.dataset.id);
-    flashTile(clickedIndex);
+    flashTile(clickedIndex); // Visual + sound feedback
     playerSequence.push(clickedIndex);
 
     if (playerSequence[playerSequence.length - 1] !== sequence[playerSequence.length - 1]) {
@@ -76,6 +100,8 @@ tiles.forEach((tile) => {
 });
 
 function gameOver() {
+  bgMusic.pause();
+  gameOverSound.play();
   scoreDisplay.textContent = score;
   gameOverPopup.style.display = 'block';
 
@@ -88,6 +114,7 @@ function gameOver() {
 
 function resetGame() {
   gameOverPopup.style.display = 'none';
+  bgMusic.play();
   startGame();
 }
 
