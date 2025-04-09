@@ -23,12 +23,21 @@
   </div>
 
   <div id="gameOverPopup">
-    <h2>GAME OVER</h2>
-    <p>Your Score: <span id="scoreDisplay">0</span></p>
-    <h1>CalendarGuy.sign follow me:https://x.com/wageivan</h1>
-    <button onclick="shareScore()">Share in X</button>
-    <button onclick="resetGame()">Try Again</button>
+  <div class="popup-content">
+    <div class="score-section">
+      <h2>GAME OVER</h2>
+      <p>Your Score: <span id="scoreDisplay">0</span></p>
+      <button onclick="shareScore()">Share on X</button>
+      <button onclick="resetGame()">Try Again</button>
+    </div>
+
+    <div class="developer-section">
+      <h3>Game by <span class="dev-name">CalendarGuy.sign</span></h3>
+      <button onclick="window.open('https://x.com/wageivan', '_blank')">Follow Developer</button>
+    </div>
   </div>
+</div>
+
 
   <script src="script.js"></script>
 </body>
