@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simon SIGN</title>
+  <title>SImon SIGN</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="falling-text">sign sign sign sign</div>
 
-  <h1>Simon SIGN</h1>
+  <h1>SImon SIGN</h1>
   <button id="startBtn">START THE GAME</button>
 
   <div id="gameBoard">
@@ -30,54 +30,13 @@
         <button onclick="shareScore()">Share on X</button>
         <button onclick="resetGame()">Try Again</button>
       </div>
-
       <div class="developer-section">
         <h3>Game by <span class="dev-name">CalendarGuy.sign</span></h3>
-        <button onclick="window.open('https://x.com/wageivan', '_blank')">Follow Me 👀</button>
+        <button onclick="window.open('https://x.com/wageivan', '_blank')">Follow Me👀</button>
       </div>
     </div>
   </div>
 
-  <!-- Optional background music -->
-  <!-- <audio id="bgMusic" src="bg.mp3" loop></audio> -->
-
-  <script>
-    const startBtn = document.getElementById("startBtn");
-    const gameBoard = document.getElementById("gameBoard");
-    const gameOverPopup = document.getElementById("gameOverPopup");
-    const scoreDisplay = document.getElementById("scoreDisplay");
-
-    // Start Game button click
-    startBtn.addEventListener("click", () => {
-      startBtn.style.display = "none"; // Hide button
-      gameBoard.style.display = "grid"; // Show game grid
-      startGame();
-    });
-
-    // Dummy Game Logic
-    function startGame() {
-      console.log("Game Started");
-
-      // Example only: Show game over popup after 5 seconds
-      setTimeout(() => {
-        scoreDisplay.textContent = Math.floor(Math.random() * 100); // Random score
-        gameOverPopup.style.display = "block";
-        gameBoard.style.display = "none";
-      }, 5000);
-    }
-
-    // Try Again
-    function resetGame() {
-      gameOverPopup.style.display = "none";
-      startBtn.style.display = "inline-block";
-    }
-
-    // Share on X
-    function shareScore() {
-      const text = `I scored ${scoreDisplay.textContent} in Simon SIGN! Play here 👉 https://your-game-link.vercel.app/`;
-      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-      window.open(url, '_blank');
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
