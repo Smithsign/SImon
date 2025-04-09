@@ -1,12 +1,11 @@
-/* Base Styles */
+
 body {
   margin: 0;
   font-family: 'Press Start 2P', cursive;
   animation: bgPulse 10s infinite alternate;
   color: #fff;
   text-align: center;
-  overflow-x: hidden;
-  background-color: #ff6f00;
+  overflow: hidden;
 }
 
 h1 {
@@ -16,54 +15,92 @@ h1 {
   text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
 }
 
-/* Button Styling */
+button {
+  box-shadow: 0 0 10px #fff, 0 0 20px #ffa726;
+}
+
+.tile {
+  border: 4px solid #ffcc00;
+  box-shadow: 0 0 10px #ffcc00;
+}
+
+@keyframes bgPulse {
+  0% {
+    background-color: #ff6f00;
+  }
+  25% {
+    background-color: #ff8f00;
+  }
+  50% {
+    background-color: #ffa000;
+  }
+  75% {
+    background-color: #ffb300;
+  }
+  100% {
+    background-color: #ffc107;
+  }
+}
+
+
+h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+}
+
 button {
   padding: 1rem 2rem;
   font-size: 0.8rem;
   border: none;
-  background: orange;
-  color: black;
+  background: #fff;
+  color: #ff6600;
   border-radius: 10px;
   cursor: pointer;
-  box-shadow: 0 0 10px #fff, 0 0 20px #ffa726;
+  box-shadow: 0 0 10px #fff;
   font-family: 'Press Start 2P', cursive;
   margin-top: 1rem;
-  transition: 0.2s;
 }
 
-button:hover {
-  background: #ff7b00;
-  transform: scale(1.05);
-}
-
-/* Game Board */
 #gameBoard {
+  display: none;
+  margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(3, 120px);
-  gap: 20px;
+  grid-template-columns: repeat(3, 150px);
+  grid-gap: 20px;
   justify-content: center;
-  margin: 2rem auto;
 }
 
 .tile {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   background-color: #222;
-  border: 4px solid #ffcc00;
-  box-shadow: 0 0 10px #ffcc00;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 4px solid #ffcc00;
   cursor: pointer;
   transition: 0.2s;
 }
 
 .tile img {
-  width: 80%;
-  height: auto;
+  width: 100px;
+  height: 100px;
 }
 
-/* Falling Text */
+#gameOverPopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #222;
+  color: #fff;
+  padding: 2rem;
+  border: 4px solid #ffcc00;
+  border-radius: 15px;
+  z-index: 1000;
+}
+
 .falling-text {
   position: absolute;
   top: -100px;
@@ -81,7 +118,6 @@ button:hover {
   100% { top: 110%; }
 }
 
-/* Game Over Popup */
 #gameOverPopup {
   display: none;
   position: fixed;
@@ -95,8 +131,8 @@ button:hover {
   z-index: 1000;
   font-family: 'Press Start 2P', cursive;
   color: #fff;
-  width: 90vw;
-  max-width: 400px;
+  max-width: 90vw;
+  width: 400px;
   text-align: center;
   box-shadow: 0 0 20px orange;
 }
@@ -117,6 +153,23 @@ button:hover {
   margin: 10px 0;
 }
 
+button {
+  font-family: 'Press Start 2P', cursive;
+  background: orange;
+  color: black;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #ff7b00;
+  transform: scale(1.05);
+}
+
 .developer-section {
   border-top: 2px dashed #fff;
   padding-top: 15px;
@@ -127,50 +180,3 @@ button:hover {
   font-size: 14px;
 }
 
-/* Background Pulse Animation */
-@keyframes bgPulse {
-  0% { background-color: #ff6f00; }
-  25% { background-color: #ff8f00; }
-  50% { background-color: #ffa000; }
-  75% { background-color: #ffb300; }
-  100% { background-color: #ffc107; }
-}
-
-/* Media Queries for Phones */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  #gameBoard {
-    grid-template-columns: repeat(2, 45vw);
-    gap: 10px;
-  }
-
-  .tile {
-    width: 45vw;
-    height: 45vw;
-  }
-
-  .tile img {
-    width: 70%;
-    height: auto;
-  }
-
-  button {
-    font-size: 0.7rem;
-    padding: 0.8rem 1.5rem;
-  }
-
-  .score-section h2 {
-    font-size: 16px;
-  }
-
-  .score-section p {
-    font-size: 14px;
-  }
-
-  .dev-name {
-    font-size: 12px;
-  }
-}
