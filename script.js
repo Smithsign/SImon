@@ -104,6 +104,6 @@ function playSound(index) {
 }
 
 function shareScore() {
-  const tweet = `https://twitter.com/intent/tweet?text=I scored ${score} on Simon SIGN! 🔥 Play it here: https://yourgameurl.com`;
+  const tweet = `https://twitter.com/intent/tweet?text=I scored ${score} on Simon SIGN! 🔥 Play it here: https://s-imon.vercel.app/`;
   window.open(tweet, '_blank');
 }
