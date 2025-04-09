@@ -117,3 +117,66 @@ button {
   0% { top: -100px; }
   100% { top: 110%; }
 }
+
+#gameOverPopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 20, 20, 0.95);
+  border: 4px solid orange;
+  padding: 30px;
+  border-radius: 20px;
+  z-index: 1000;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  max-width: 90vw;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 0 20px orange;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.score-section h2 {
+  font-size: 20px;
+  color: #ff4f4f;
+}
+
+.score-section p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+button {
+  font-family: 'Press Start 2P', cursive;
+  background: orange;
+  color: black;
+  border: none;
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #ff7b00;
+  transform: scale(1.05);
+}
+
+.developer-section {
+  border-top: 2px dashed #fff;
+  padding-top: 15px;
+}
+
+.dev-name {
+  color: #ffd700;
+  font-size: 14px;
+}
+
