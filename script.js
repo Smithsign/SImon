@@ -4,12 +4,12 @@ let score = 0;
 let acceptingInput = false;
 
 const sounds = [
-  new Audio('assets/sound1.mp3'),
-  new Audio('assets/sound2.mp3'),
-  new Audio('assets/sound3.mp3'),
-  new Audio('assets/sound4.mp3'),
-  new Audio('assets/sound5.mp3'),
-  new Audio('assets/sound6.mp3'),
+  new Audio('sound1.wav'),
+  new Audio('sound2.wav'),
+  new Audio('sound3.wav'),
+  new Audio('sound4.wav'),
+  new Audio('sound5.wav'),
+  new Audio('sound6.wav'),
 ];
 
 const startBtn = document.getElementById('startBtn');
