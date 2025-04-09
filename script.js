@@ -119,6 +119,16 @@ function resetGame() {
 }
 
 function shareScore() {
-  const tweet = `https://twitter.com/intent/tweet?text=I scored ${score} on Simon Arcade! Try to beat me!`;
-  window.open(tweet, '_blank');
+  const scoreText = `I scored ${score} on Simon SIGN 🎮🔥! Try to beat me!`;
+  const gameURL = 'https://your-vercel-link.vercel.app'; // replace this with your actual game URL
+  const imageURL = 'https://your-vercel-link.vercel.app/screenshot.jpg'; // replace with a hosted image
+
+  const tweetText = encodeURIComponent(`${scoreText}\n${gameURL}`);
+  const tweetImage = encodeURIComponent(imageURL); // currently won't embed as an image via X API, but good to include
+
+  const tweetURL = `https://twitter.com/intent/tweet?text=${tweetText}`;
+
+  window.open(tweetURL, '_blank');
+}
+
 }
