@@ -4,19 +4,19 @@ let score = 0;
 let acceptingInput = false;
 
 const sounds = {
-  0: new Audio('sounds/DO.wav'),
-  1: new Audio('sounds/RE.wav'),
-  2: new Audio('sounds/MI.wav'),
-  3: new Audio('sounds/FA.wav'),
-  4: new Audio('sounds/SI.wav'),
-  5: new Audio('sounds/LA.wav'),
+  0: new Audio('DO.wav'),
+  1: new Audio('RE.wav'),
+  2: new Audio('MI.wav'),
+  3: new Audio('FA.wav'),
+  4: new Audio('SI.wav'),
+  5: new Audio('LA.wav'),
 };
 
-const bgMusic = new Audio('sounds/bg-music.wav');
+const bgMusic = new Audio('bg-music.wav');
 bgMusic.loop = true;
 bgMusic.volume = 0.2;
 
-const gameOverSound = new Audio('sounds/gameover.wav');
+const gameOverSound = new Audio('gameover.wav');
 
 const startBtn = document.getElementById('startBtn');
 const gameBoard = document.getElementById('gameBoard');
